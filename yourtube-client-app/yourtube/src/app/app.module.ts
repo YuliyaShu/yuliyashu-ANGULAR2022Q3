@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MainComponent } from './main/main.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SearchComponent } from './header/search/search.component';
+import { SortComponent } from './header/sort/sort.component';
+import { LoginComponent } from './header/login/login.component';
+import { ItemComponent } from './main/item/item.component';
+import { SearchResultComponent } from './main/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -13,8 +19,13 @@ import { MainComponent } from './main/main.component';
     HeaderComponent,
     NotFoundComponent,
     MainComponent,
+    SearchComponent,
+    SortComponent,
+    LoginComponent,
+    ItemComponent,
+    SearchResultComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, MatToolbarModule, MatIconModule],
   providers: [],
   bootstrap: [AppComponent],
 })
