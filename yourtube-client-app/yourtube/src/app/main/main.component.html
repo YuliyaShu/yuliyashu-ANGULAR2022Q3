@@ -1,7 +1,7 @@
 <div class="container">
   <app-item
     *ngFor="let item of items"
-    [videoThumbnail]="item.snippet.thumbnails.default.url"
+    [videoThumbnail]="item.snippet.thumbnails.standard.url"
     [viewsCount]="item.statistics.viewCount"
     [likesCount]="item.statistics.likeCount"
     [dislikesCount]="item.statistics.dislikeCount"
