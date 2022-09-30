@@ -33,6 +33,10 @@
       }],
       "import/no-unresolved": [2, { "ignore": ["@angular+"]
       }],
-      "linebreak-style": ["error", "windows"]
+      "linebreak-style": ["error", "windows"],
+      "no-empty-function": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@angular-eslint/no-empty-lifecycle-method": "off",
+      "lines-between-class-members": "off"
     }
 }

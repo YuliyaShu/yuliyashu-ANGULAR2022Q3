@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item, ResponseService } from './response.service';
 
 @Component({
   selector: 'app-main',
@@ -6,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  // constructor() { }
+  items: Item[] = [];
 
-  ngOnInit(): void {}
+  constructor(private response: ResponseService) { }
+
+  ngOnInit(): void {
+    this.getItems();
+  }
+
+  async getItems() {
+    await this.response.itemsList.then((resp) => {
+      this.items = resp.items;
+    });
+  }
 }

@@ -2,6 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatBadgeModule } from '@angular/material/badge';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -25,7 +30,17 @@ import { SearchResultComponent } from './main/search-result/search-result.compon
     ItemComponent,
     SearchResultComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MatToolbarModule, MatIconModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatCardModule,
+    MatBadgeModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
