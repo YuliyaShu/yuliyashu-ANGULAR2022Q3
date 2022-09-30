@@ -1,1 +1,21 @@
-// TBD
+.example-card {
+  width: 263px;
+  height: 360px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.mat-card-header-text {
+  margin: 0;
+}
+
+.mat-badge-content {
+  font-size: 5px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
