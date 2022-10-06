@@ -1,1 +1,6 @@
-<p>search works!</p>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input type="text" matInput placeholder="Search" [(ngModel)]= "search" [ngModelOptions]="{standalone: true}">
+    <button mat-raised-button color="accent" (click)="onSubmit()">Search</button>
+  </mat-form-field>
+</form>

@@ -1,12 +1,22 @@
 <div class="container">
   <mat-toolbar >
     <mat-toolbar-row class="header__row">
-      <app-search></app-search>
-      <app-login></app-login>
+      <a routerLink="">
+        <img src="../../assets/images/logo.png" alt="logo">
+      </a>
+      <app-search (newSubmitEvent)="onSubmit()"></app-search>
+      <a routerLink="">
+        <img src="../../assets/images/search_settings.png" alt="">
+      </a>
+      <app-login>
+        <img src="../../assets/images/login.png" alt="login">
+      </app-login>
     </mat-toolbar-row>
-
     <mat-toolbar-row class="header__row">
-      <app-sort></app-sort>
+      {{submitted}}
+      <ng-template [ngIf]="submitted">
+        <app-sort></app-sort>
+      </ng-template>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
