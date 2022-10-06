@@ -15,9 +15,11 @@ export class MainComponent implements OnInit {
     this.getItems();
   }
 
-  async getItems() {
-    await this.response.itemsList.then((resp) => {
-      this.items = resp.items;
+  getItems() {
+    this.response.itemsList.subscribe((items) => {
+      if (Array.isArray(items)) {
+        this.items = items;
+      }
     });
   }
 }
