@@ -1,12 +1,16 @@
 <div class="container">
   <mat-toolbar >
     <mat-toolbar-row class="header__row">
-      <app-search></app-search>
+      <a routerLink="">
+        <img src="../../assets/images/logo.png" alt="logo">
+      </a>
+      <app-search (newSubmitEvent)="onSubmit()"></app-search>
       <app-login></app-login>
     </mat-toolbar-row>
-
     <mat-toolbar-row class="header__row">
-      <app-sort></app-sort>
+      <ng-template [ngIf]="submitted">
+        <app-sort></app-sort>
+      </ng-template>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>

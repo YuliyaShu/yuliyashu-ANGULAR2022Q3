@@ -7,6 +7,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatBadgeModule } from '@angular/material/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -17,6 +21,7 @@ import { SortComponent } from './header/sort/sort.component';
 import { LoginComponent } from './header/login/login.component';
 import { ItemComponent } from './main/item/item.component';
 import { SearchResultComponent } from './main/search-result/search-result.component';
+import { ColorLineDirective } from './main/item/color-line.directive';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,7 @@ import { SearchResultComponent } from './main/search-result/search-result.compon
     LoginComponent,
     ItemComponent,
     SearchResultComponent,
+    ColorLineDirective,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +46,10 @@ import { SearchResultComponent } from './main/search-result/search-result.compon
     MatBadgeModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

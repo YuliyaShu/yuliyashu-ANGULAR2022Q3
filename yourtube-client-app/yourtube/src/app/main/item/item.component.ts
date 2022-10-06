@@ -12,6 +12,7 @@ export class ItemComponent implements OnInit {
   @Input() dislikesCount = '';
   @Input() commentsCount = '';
   @Input() videoTitle = '';
+  @Input() publishedAt = '';
 
   // constructor() { }
 

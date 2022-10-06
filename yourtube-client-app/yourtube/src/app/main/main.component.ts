@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Item, ResponseService } from './response.service';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { SearchService } from '../header/search/search.service';
+import { Item } from '../interfaces/Item';
+import { ResponseService } from './response.service';
 
+@Injectable({
+  providedIn: 'root',
+})
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -8,16 +13,26 @@ import { Item, ResponseService } from './response.service';
 })
 export class MainComponent implements OnInit {
   items: Item[] = [];
+  submitted = false;
+  result = this.searchService.getSubmitted().subscribe((value) => {
+    this.submitted = value;
+    return value;
+  });
 
-  constructor(private response: ResponseService) { }
+  constructor(
+    private response: ResponseService,
+    private searchService: SearchService,
+  ) { }
 
   ngOnInit(): void {
     this.getItems();
   }
 
-  async getItems() {
-    await this.response.itemsList.then((resp) => {
-      this.items = resp.items;
+  getItems() {
+    this.response.itemsList.subscribe((items) => {
+      if (Array.isArray(items)) {
+        this.items = items;
+      }
     });
   }
 }

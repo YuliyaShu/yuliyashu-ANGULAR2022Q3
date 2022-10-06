@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from './search/search.service';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  // constructor() { }
+  submitted = false;
+  result = this.searchService.getSubmitted().subscribe((value) => {
+    this.submitted = value;
+    return value;
+  });
+
+  constructor(
+    private searchService: SearchService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
   }
 }

@@ -1,1 +1,20 @@
-// TBD
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+img {
+  margin-left: 80px;
+  margin-top: 17px;
+}
+
+.mat-blue {
+  background-color: #2f80ed;
+  color: white;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+}
