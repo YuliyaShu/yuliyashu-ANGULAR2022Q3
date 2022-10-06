@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Item, ResponseService } from './response.service';
+import { Item } from '../interfaces/Item';
+import { ResponseService } from './response.service';
 
 @Component({
   selector: 'app-main',
