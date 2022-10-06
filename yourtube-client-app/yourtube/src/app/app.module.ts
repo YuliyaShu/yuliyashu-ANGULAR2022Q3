@@ -21,6 +21,7 @@ import { SortComponent } from './header/sort/sort.component';
 import { LoginComponent } from './header/login/login.component';
 import { ItemComponent } from './main/item/item.component';
 import { SearchResultComponent } from './main/search-result/search-result.component';
+import { ColorLineDirective } from './main/item/color-line.directive';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SearchResultComponent } from './main/search-result/search-result.compon
     LoginComponent,
     ItemComponent,
     SearchResultComponent,
+    ColorLineDirective,
   ],
   imports: [
     BrowserModule,

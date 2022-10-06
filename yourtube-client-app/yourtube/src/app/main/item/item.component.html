@@ -10,6 +10,9 @@
     <mat-card-title >{{videoTitle}}</mat-card-title>
   </mat-card-header>
   <mat-card-actions>
-    <button mat-raised-button color="accent">More</button>
+    <button mat-raised-button color="blue">More</button>
   </mat-card-actions>
+  <mat-card-footer>
+    <div class="color-line" [appColorLine]="publishedAt"></div>
+  </mat-card-footer>
 </mat-card>
