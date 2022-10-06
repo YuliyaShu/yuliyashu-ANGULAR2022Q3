@@ -21,6 +21,5 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
   }
 }
