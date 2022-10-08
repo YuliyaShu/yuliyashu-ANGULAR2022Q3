@@ -1,1 +1,21 @@
-// TBD
+p,
+div {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+}
+
+p {
+  margin: 0 20px 0 0;
+}
+
+.mat-sort-header {
+  margin-right: 10px;
+}

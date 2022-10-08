@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, catchError } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { ItemsList } from '../interfaces/ItemsList';
+import { Item } from '../interfaces/Item';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +13,7 @@ import { ItemsList } from '../interfaces/ItemsList';
 export class ResponseService {
   url = '../../response.json';
   itemsList = this.getItemsList();
+  items = new BehaviorSubject<Item[]>([]);
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
@@ -26,5 +29,13 @@ export class ResponseService {
   }
   openSnackBar(message: string) {
     this.snackBar.open(message, 'Undo', { duration: 3000 });
+  }
+
+  setItems(items: Item[]) {
+    this.items.next(items);
+  }
+
+  getItems() {
+    return this.items;
   }
 }

@@ -1,6 +1,7 @@
 import {
-  Component, Injectable, OnInit, Output, EventEmitter,
+  Component, Injectable, OnInit,
 } from '@angular/core';
+import { ResponseService } from '../../main/response.service';
 import { SearchService } from './search.service';
 
 @Injectable({
@@ -13,17 +14,24 @@ import { SearchService } from './search.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  @Output() newSubmitEvent = new EventEmitter<boolean>();
   search: String = '';
   submitted = false;
-  constructor(private searchService: SearchService) { }
+
+  constructor(
+    private searchService: SearchService,
+    private responseService: ResponseService,
+  ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     this.submitted = true;
-    this.newSubmitEvent.emit(true);
     this.searchService.setSubmitted(true);
+    this.responseService.getItemsList().subscribe((value) => {
+      if (Array.isArray(value)) {
+        this.responseService.setItems(value);
+      }
+    });
   }
 }
