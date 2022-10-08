@@ -1,7 +1,7 @@
 <ng-template [ngIf]="submitted">
   <div class="container">
     <app-item
-      *ngFor="let item of items"
+      *ngFor="let item of sortedItems"
       [videoThumbnail]="item.snippet.thumbnails.standard.url"
       [viewsCount]="item.statistics.viewCount"
       [likesCount]="item.statistics.likeCount"

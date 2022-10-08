@@ -4,11 +4,14 @@
       <a routerLink="">
         <img src="../../assets/images/logo.png" alt="logo">
       </a>
-      <app-search (newSubmitEvent)="onSubmit()"></app-search>
+      <app-search ></app-search>
+      <button class="settings-button"  (click)="onSettings()">
+        <img src="../../assets/images/search_settings.png" alt="settings">
+      </button>
       <app-login></app-login>
     </mat-toolbar-row>
     <mat-toolbar-row class="header__row">
-      <ng-template [ngIf]="submitted">
+      <ng-template [ngIf]="settingsOn">
         <app-sort></app-sort>
       </ng-template>
     </mat-toolbar-row>

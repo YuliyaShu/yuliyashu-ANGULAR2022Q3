@@ -1,10 +1,6 @@
 <form class="example-form">
-  <mat-form-field appearance="standard" class="example-full-width">
+  <mat-form-field appearance="legacy" class="example-full-width">
     <input type="text" matInput placeholder="Search" [(ngModel)]= "search" [ngModelOptions]="{standalone: true}">
     <button mat-raised-button color="blue" (click)="onSubmit()">Search</button>
-
   </mat-form-field>
-  <a routerLink="">
-    <img src="../../assets/images/search_settings.png" alt="settings">
-  </a>
 </form>

@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -50,6 +51,7 @@ import { ColorLineDirective } from './main/item/color-line.directive';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

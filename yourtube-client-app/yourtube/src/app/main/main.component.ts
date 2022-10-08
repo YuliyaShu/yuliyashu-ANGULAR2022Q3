@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { SearchService } from '../header/search/search.service';
+import { SortItemsService } from '../header/sort/sort-items.service';
 import { Item } from '../interfaces/Item';
 import { ResponseService } from './response.service';
 
@@ -13,26 +14,28 @@ import { ResponseService } from './response.service';
 })
 export class MainComponent implements OnInit {
   items: Item[] = [];
+  sortedItems: Item[] = [];
+  result = this.responseService.getItems().subscribe((value) => {
+    this.items = value;
+    this.sortedItems = value;
+    return value;
+  });
+  resultSort = this.sortItems.getSort().subscribe((value) => {
+    this.sortedItems = value;
+    return value;
+  });
   submitted = false;
-  result = this.searchService.getSubmitted().subscribe((value) => {
+  resultSearch = this.searchService.getSubmitted().subscribe((value) => {
     this.submitted = value;
     return value;
   });
 
   constructor(
-    private response: ResponseService,
+    private responseService: ResponseService,
     private searchService: SearchService,
+    private sortItems: SortItemsService,
   ) { }
 
-  ngOnInit(): void {
-    this.getItems();
-  }
-
-  getItems() {
-    this.response.itemsList.subscribe((items) => {
-      if (Array.isArray(items)) {
-        this.items = items;
-      }
-    });
+  ngOnInit() {
   }
 }

@@ -1,1 +1,7 @@
-<p>sort works!</p>
+<div>
+  <p>Sorting by:</p>
+  <div matSort (matSortChange)="sortItems($event)">
+    <div mat-sort-header="date">date</div>
+    <div mat-sort-header="views">count of views</div>
+  </div>
+</div>

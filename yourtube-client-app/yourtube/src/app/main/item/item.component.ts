@@ -14,8 +14,6 @@ export class ItemComponent implements OnInit {
   @Input() videoTitle = '';
   @Input() publishedAt = '';
 
-  // constructor() { }
-
   ngOnInit(): void {
   }
 }

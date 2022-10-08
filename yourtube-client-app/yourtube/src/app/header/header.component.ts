@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from './search/search.service';
+import { SortService } from './sort/sort.service';
 
 @Component({
   selector: 'app-header',
@@ -7,19 +7,24 @@ import { SearchService } from './search/search.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  submitted = false;
-  result = this.searchService.getSubmitted().subscribe((value) => {
-    this.submitted = value;
+  settingsOn = false;
+  result = this.sortService.getSettingsOn().subscribe((value) => {
+    this.settingsOn = value;
     return value;
   });
-
-  constructor(
-    private searchService: SearchService,
-  ) { }
+  count = 0;
+  constructor(private sortService: SortService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSettings() {
+    if (this.count % 2) {
+      this.settingsOn = false;
+    } else {
+      this.settingsOn = true;
+    }
+    this.count += 1;
+    this.sortService.setSettingsOn(this.settingsOn);
   }
 }

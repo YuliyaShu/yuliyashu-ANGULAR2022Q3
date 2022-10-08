@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 
 export class SearchService {
   private submitted = new BehaviorSubject(false);
-  // constructor() { }
+
   setSubmitted(value: boolean) {
     this.submitted.next(value);
   }
