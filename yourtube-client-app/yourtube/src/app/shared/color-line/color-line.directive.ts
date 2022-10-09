@@ -1,7 +1,10 @@
 import {
-  Directive, ElementRef, Input, OnInit,
+  Directive, ElementRef, Injectable, Input, OnInit,
 } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root',
+})
 @Directive({
   selector: '[appColorLine]',
 })

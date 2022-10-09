@@ -22,7 +22,7 @@ import { SortComponent } from './header/sort/sort.component';
 import { LoginComponent } from './header/login/login.component';
 import { ItemComponent } from './main/item/item.component';
 import { SearchResultComponent } from './main/search-result/search-result.component';
-import { ColorLineDirective } from './main/item/color-line.directive';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -35,23 +35,23 @@ import { ColorLineDirective } from './main/item/color-line.directive';
     LoginComponent,
     ItemComponent,
     SearchResultComponent,
-    ColorLineDirective,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    HttpClientModule,
+    SharedModule,
     MatToolbarModule,
     MatIconModule,
     MatSnackBarModule,
     MatCardModule,
     MatBadgeModule,
-    BrowserAnimationsModule,
     MatButtonModule,
-    HttpClientModule,
     MatFormFieldModule,
-    FormsModule,
     MatInputModule,
     MatSortModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
