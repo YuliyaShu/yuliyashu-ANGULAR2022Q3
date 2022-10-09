@@ -1,6 +1,7 @@
 import {
   Component, Injectable, OnInit,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResponseService } from '../../../youtube/main/response.service';
 import { SearchService } from './search.service';
 
@@ -20,6 +21,7 @@ export class SearchComponent implements OnInit {
   constructor(
     private searchService: SearchService,
     private responseService: ResponseService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -33,5 +35,6 @@ export class SearchComponent implements OnInit {
         this.responseService.setItems(value);
       }
     });
+    this.router.navigateByUrl('');
   }
 }

@@ -14,6 +14,7 @@ import { MainComponent } from './main/main.component';
 import { ItemComponent } from './main/item/item.component';
 import { SearchResultComponent } from './main/search-result/search-result.component';
 import { ColorLineDirective } from '../shared/color-line/color-line.directive';
+import { YoutubeRoutingModule } from './youtube-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ColorLineDirective } from '../shared/color-line/color-line.directive';
     MatInputModule,
     MatSortModule,
     FormsModule,
+    YoutubeRoutingModule,
   ],
   exports: [
     MainComponent,

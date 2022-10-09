@@ -14,14 +14,13 @@ import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './header/search/search.component';
 import { SortComponent } from './header/sort/sort.component';
 import { SortItemsService } from './header/sort/sort-items.service';
-import { LoginComponent } from '../auth/login/login.component';
+import { CoreRoutingModule } from './core-routing.module';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SearchComponent,
     SortComponent,
-    LoginComponent,
   ],
   imports: [
     CommonModule,
@@ -35,6 +34,7 @@ import { LoginComponent } from '../auth/login/login.component';
     MatInputModule,
     MatSortModule,
     FormsModule,
+    CoreRoutingModule,
   ],
   providers: [
     SortItemsService,
