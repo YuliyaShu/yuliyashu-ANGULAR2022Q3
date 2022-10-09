@@ -4,4 +4,6 @@
     <div mat-sort-header="date">date</div>
     <div mat-sort-header="views">count of views</div>
   </div>
+  <p>by word or sentence</p>
+  <input type="text" matInput (keyup)="applyFilter($event)" style="background-color: white; border: 1px solid grey">
 </div>
