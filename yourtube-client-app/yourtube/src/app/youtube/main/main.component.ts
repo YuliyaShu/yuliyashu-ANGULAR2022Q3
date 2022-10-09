@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { SearchService } from '../header/search/search.service';
-import { SortItemsService } from '../header/sort/sort-items.service';
-import { Item } from '../interfaces/Item';
+import { SearchService } from '../../core/header/search/search.service';
+import { SortItemsService } from '../../core/header/sort/sort-items.service';
+import { Item } from '../../core/interfaces/Item';
 import { ResponseService } from './response.service';
 
 @Injectable({

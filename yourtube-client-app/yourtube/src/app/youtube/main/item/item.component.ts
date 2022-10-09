@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ColorLineDirective } from '../../shared/color-line/color-line.directive';
+import { ColorLineDirective } from '../../../shared/color-line/color-line.directive';
 
 @Component({
   selector: 'app-item',

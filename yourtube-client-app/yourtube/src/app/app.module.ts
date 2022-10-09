@@ -13,33 +13,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SearchComponent } from './header/search/search.component';
-import { SortComponent } from './header/sort/sort.component';
-import { ItemComponent } from './main/item/item.component';
-import { SearchResultComponent } from './main/search-result/search-result.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { YoutubeModule } from './youtube/youtube.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     NotFoundComponent,
-    MainComponent,
-    SearchComponent,
-    SortComponent,
-    ItemComponent,
-    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     SharedModule,
     AuthModule,
+    CoreModule,
+    YoutubeModule,
     MatToolbarModule,
     MatIconModule,
     MatSnackBarModule,

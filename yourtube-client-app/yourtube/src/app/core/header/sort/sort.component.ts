@@ -1,7 +1,7 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ResponseService } from '../../main/response.service';
+import { ResponseService } from '../../../youtube/main/response.service';
 import { Item } from '../../interfaces/Item';
 import { SortItemsService } from './sort-items.service';
 

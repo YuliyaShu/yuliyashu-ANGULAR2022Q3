@@ -1,7 +1,7 @@
 import {
   Component, Injectable, OnInit,
 } from '@angular/core';
-import { ResponseService } from '../../main/response.service';
+import { ResponseService } from '../../../youtube/main/response.service';
 import { SearchService } from './search.service';
 
 @Injectable({

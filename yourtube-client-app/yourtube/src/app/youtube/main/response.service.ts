@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, catchError } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
-import { ItemsList } from '../interfaces/ItemsList';
-import { Item } from '../interfaces/Item';
+import { ItemsList } from '../../core/interfaces/ItemsList';
+import { Item } from '../../core/interfaces/Item';
 
 @Injectable({
   providedIn: 'root',
