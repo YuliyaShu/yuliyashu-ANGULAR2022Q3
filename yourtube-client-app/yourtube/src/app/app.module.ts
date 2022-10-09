@@ -19,10 +19,10 @@ import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchComponent } from './header/search/search.component';
 import { SortComponent } from './header/sort/sort.component';
-import { LoginComponent } from './header/login/login.component';
 import { ItemComponent } from './main/item/item.component';
 import { SearchResultComponent } from './main/search-result/search-result.component';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,6 @@ import { SharedModule } from './shared/shared.module';
     MainComponent,
     SearchComponent,
     SortComponent,
-    LoginComponent,
     ItemComponent,
     SearchResultComponent,
   ],
@@ -40,6 +39,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     HttpClientModule,
     SharedModule,
+    AuthModule,
     MatToolbarModule,
     MatIconModule,
     MatSnackBarModule,
