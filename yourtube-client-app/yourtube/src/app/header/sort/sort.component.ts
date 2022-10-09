@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Sort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { ResponseService } from '../../main/response.service';
 import { Item } from '../../interfaces/Item';
 import { SortItemsService } from './sort-items.service';
@@ -19,13 +20,20 @@ export class SortComponent implements OnInit {
     return value;
   });
   sortedItemsList: Item[] = [];
+  dataSource = new MatTableDataSource(this.items);
 
   constructor(
     private responseService: ResponseService,
     private sortItemsList: SortItemsService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
+    this.dataSource
+      .filterPredicate = (data: Item, filter: string) => data.snippet.channelTitle
+        .toLocaleLowerCase().includes(filter)
+      || data.snippet.description
+        .toLocaleLowerCase().includes(filter);
   }
 
   sortItems(sort: Sort) {
@@ -54,5 +62,11 @@ export class SortComponent implements OnInit {
   }
   compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.sortItemsList.setSort(this.dataSource.filteredData);
   }
 }
