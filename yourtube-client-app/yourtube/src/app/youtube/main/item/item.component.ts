@@ -1,6 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component, OnInit, Input, Injectable,
+} from '@angular/core';
+import { Item } from '../../../core/interfaces/Item';
 import { ColorLineDirective } from '../../../shared/color-line/color-line.directive';
 
+@Injectable({
+  providedIn: 'root',
+})
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
@@ -15,6 +21,7 @@ export class ItemComponent implements OnInit {
   @Input() videoTitle = '';
   @Input() publishedAt = '';
   @Input() id = '';
+  @Input() item = {} as Item;
 
   appColorLine = this.colorLine.publishedAt;
 
@@ -22,5 +29,9 @@ export class ItemComponent implements OnInit {
 
   }
   ngOnInit(): void {
+  }
+
+  clickedItem(item: Item) {
+    localStorage.setItem('item', JSON.stringify(item));
   }
 }

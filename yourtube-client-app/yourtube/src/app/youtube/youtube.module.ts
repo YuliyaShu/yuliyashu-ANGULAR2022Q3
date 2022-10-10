@@ -15,7 +15,7 @@ import { ItemComponent } from './main/item/item.component';
 import { SearchResultComponent } from './main/search-result/search-result.component';
 import { ColorLineDirective } from '../shared/color-line/color-line.directive';
 import { YoutubeRoutingModule } from './youtube-routing.module';
-import { VideoComponent } from './video/video.component';
+import { VideoComponent } from './main/item/video/video.component';
 
 @NgModule({
   declarations: [

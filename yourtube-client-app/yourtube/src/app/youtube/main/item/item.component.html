@@ -10,7 +10,7 @@
     <mat-card-title >{{videoTitle}}</mat-card-title>
   </mat-card-header>
   <mat-card-actions>
-    <a routerLink="/video/{{ id }}">
+    <a routerLink="/video/{{ id }}" (click)="clickedItem(item)">
       <button mat-raised-button color="blue">More</button>
     </a>
   </mat-card-actions>
