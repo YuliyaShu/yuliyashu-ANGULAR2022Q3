@@ -5,7 +5,7 @@
         <img src="../../assets/images/logo.svg" alt="logo">
       </a>
       <app-search ></app-search>
-      <button class="settings-button"  (click)="onSettings()">
+      <button class="settings-button" *ngIf="isVideoRoute()" (click)="onSettings()">
         <img class="settings-img" src="../../assets/images/search_settings.svg" alt="settings">
       </button>
       <p>Guest</p>

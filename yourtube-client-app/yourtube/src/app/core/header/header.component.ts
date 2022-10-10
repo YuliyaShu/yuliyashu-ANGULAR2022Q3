@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SortService } from './sort/sort.service';
 
+@Injectable({ providedIn: 'root' })
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,7 +15,7 @@ export class HeaderComponent implements OnInit {
     return value;
   });
   count = 0;
-  constructor(private sortService: SortService) { }
+  constructor(private sortService: SortService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -26,5 +28,11 @@ export class HeaderComponent implements OnInit {
     }
     this.count += 1;
     this.sortService.setSettingsOn(this.settingsOn);
+  }
+
+  isVideoRoute() {
+    console.log((this.router.url));
+    console.log(!(this.router.url.includes('video')));
+    return !(this.router.url.includes('video'));
   }
 }
