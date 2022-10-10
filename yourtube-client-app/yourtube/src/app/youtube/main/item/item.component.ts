@@ -14,6 +14,7 @@ export class ItemComponent implements OnInit {
   @Input() commentsCount = '';
   @Input() videoTitle = '';
   @Input() publishedAt = '';
+  @Input() id = '';
 
   appColorLine = this.colorLine.publishedAt;
 
