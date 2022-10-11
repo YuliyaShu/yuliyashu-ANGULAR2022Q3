@@ -31,8 +31,6 @@ export class HeaderComponent implements OnInit {
   }
 
   isVideoRoute() {
-    console.log((this.router.url));
-    console.log(!(this.router.url.includes('video')));
     return !(this.router.url.includes('video'));
   }
 }
