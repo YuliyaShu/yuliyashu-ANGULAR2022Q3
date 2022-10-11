@@ -1,5 +1,8 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { LoginService } from '../../auth/login/login.service';
+import { LogOutDialogComponent } from './log-out-dialog/log-out-dialog.component';
 import { SortService } from './sort/sort.service';
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +18,20 @@ export class HeaderComponent implements OnInit {
     return value;
   });
   count = 0;
-  constructor(private sortService: SortService, private router: Router) { }
+  isLogin = !!(localStorage.getItem('token'));
+  login = localStorage.getItem('login') || 'Guest';
+  getLoginData = this.loginData.getLoginData().subscribe((data) => {
+    if (data.token) {
+      this.login = JSON.parse(data.token).login!;
+    }
+  })
+
+  constructor(
+    private sortService: SortService,
+    private router: Router,
+    private loginData: LoginService,
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +46,11 @@ export class HeaderComponent implements OnInit {
     this.sortService.setSettingsOn(this.settingsOn);
   }
 
-  isVideoRoute() {
-    return !(this.router.url.includes('video'));
+  isRoute(route: string) {
+    return !(this.router.url.includes(route));
+  }
+
+  openDialog() {
+    this.dialog.open(LogOutDialogComponent);
   }
 }

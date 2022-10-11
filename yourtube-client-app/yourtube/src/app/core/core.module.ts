@@ -9,18 +9,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './header/search/search.component';
 import { SortComponent } from './header/sort/sort.component';
 import { SortItemsService } from './header/sort/sort-items.service';
 import { CoreRoutingModule } from './core-routing.module';
+import { LogOutDialogComponent } from './header/log-out-dialog/log-out-dialog.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SearchComponent,
     SortComponent,
+    LogOutDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -34,6 +37,7 @@ import { CoreRoutingModule } from './core-routing.module';
     MatInputModule,
     MatSortModule,
     FormsModule,
+    MatDialogModule,
     CoreRoutingModule,
   ],
   providers: [
