@@ -1,0 +1,16 @@
+<ng-template [ngIf]="submitted">
+  <div class="container">
+    <app-item
+      *ngFor="let item of sortedItems"
+      [videoThumbnail]="item.snippet.thumbnails.standard.url"
+      [viewsCount]="item.statistics.viewCount"
+      [likesCount]="item.statistics.likeCount"
+      [dislikesCount]="item.statistics.dislikeCount"
+      [commentsCount]="item.statistics.commentCount"
+      [videoTitle]="item.snippet.title"
+      [publishedAt]="item.snippet.publishedAt"
+      [id]="item.id"
+      [item]="item"
+  ></app-item>
+  </div>
+</ng-template>

@@ -1,0 +1,20 @@
+<mat-card class="example-card">
+  <img mat-card-image [src]="videoThumbnail" alt="videoThumbnail">
+  <mat-card-content style="display: flex; justify-content: space-around;">
+    <mat-icon [matBadge]="(+viewsCount) >= 1000 ? '>1k' : viewsCount" matBadgeColor="accent">remove_red_eye</mat-icon>
+    <mat-icon [matBadge]="(+likesCount) >= 1000 ? '>1k' : likesCount" matBadgeColor="accent">mood</mat-icon>
+    <mat-icon [matBadge]="(+dislikesCount) >= 1000 ? '>1k' : dislikesCount" matBadgeColor="accent">mood_bad</mat-icon>
+    <mat-icon [matBadge]="(+commentsCount) >= 1000 ? '>1k' : commentsCount" matBadgeColor="accent"> comment</mat-icon>
+  </mat-card-content>
+  <mat-card-header >
+    <mat-card-title >{{videoTitle}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions>
+    <a routerLink="/video/{{ id }}" (click)="clickedItem(item)">
+      <button mat-raised-button color="blue">More</button>
+    </a>
+  </mat-card-actions>
+  <mat-card-footer>
+    <div class="color-line" [appColorLine]="publishedAt"></div>
+  </mat-card-footer>
+</mat-card>
