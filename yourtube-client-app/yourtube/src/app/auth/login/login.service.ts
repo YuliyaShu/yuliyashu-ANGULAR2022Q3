@@ -33,4 +33,8 @@ export class LoginService {
     localStorage.removeItem('login');
     document.location.pathname = 'login';
   }
+
+  isAuthenticated() {
+    return this.data.isLogin;
+  }
 }
