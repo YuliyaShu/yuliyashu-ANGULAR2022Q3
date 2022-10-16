@@ -28,10 +28,5 @@ export class ItemComponent implements OnInit {
   constructor(private colorLine: ColorLineDirective) {
 
   }
-  ngOnInit(): void {
-  }
-
-  clickedItem(item: Item) {
-    localStorage.setItem('item', JSON.stringify(item));
-  }
+  ngOnInit(): void {}
 }

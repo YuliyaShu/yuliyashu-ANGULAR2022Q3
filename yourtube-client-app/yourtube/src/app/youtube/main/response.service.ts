@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map, catchError } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 import { ItemsList } from '../../core/interfaces/ItemsList';
 import { Item } from '../../core/interfaces/Item';
 
@@ -15,7 +16,7 @@ export class ResponseService {
   itemsList = this.getItemsList();
   items = new BehaviorSubject<Item[]>([]);
 
-  constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
+  constructor(private snackBar: MatSnackBar, private http: HttpClient, private router: Router) { }
 
   getItemsList() {
     return this.http.get<ItemsList>(this.url)
@@ -37,5 +38,18 @@ export class ResponseService {
 
   getItems() {
     return this.items;
+  }
+
+  getItemById(id: string) {
+    let result!: Item;
+    if (this.items.value instanceof Array) {
+      const itemWithProperId = this.items.value.filter((item) => item.id === id);
+      if (itemWithProperId.length) {
+        [result] = itemWithProperId;
+      } else {
+        this.router.navigateByUrl(id);
+      }
+    }
+    return result;
   }
 }

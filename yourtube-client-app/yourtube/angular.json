@@ -26,7 +26,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/response.json"
+              "src/response.json",
+              "src/_redirects"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
@@ -102,6 +103,14 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/yourtube",
+            "netlifyToken": "Piy9s4l16ESY8msRg7sNcR7H93oPsAgyADHD78j1Y7s",
+            "siteId": "35deea15-43db-442a-90b4-d832c74b274c"
           }
         }
       }
