@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ResponseService } from './youtube/main/response.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +6,7 @@ import { ResponseService } from './youtube/main/response.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private responseService: ResponseService) {}
+  title = 'youtube';
   ngOnInit(): void {
-    // this.responseService.getItemsList('').subscribe((value) => {
-    //   if (Array.isArray(value)) {
-    //     this.responseService.setItems(value);
-    //   }
-    // });
   }
 }

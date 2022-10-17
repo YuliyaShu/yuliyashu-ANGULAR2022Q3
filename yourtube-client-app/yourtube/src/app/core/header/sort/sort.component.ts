@@ -30,7 +30,7 @@ export class SortComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource
-      .filterPredicate = (data: Item, filter: string) => data.snippet.channelTitle
+      .filterPredicate = (data: Item, filter: string) => data.snippet.title
         .toLocaleLowerCase().includes(filter)
       || data.snippet.description
         .toLocaleLowerCase().includes(filter);
