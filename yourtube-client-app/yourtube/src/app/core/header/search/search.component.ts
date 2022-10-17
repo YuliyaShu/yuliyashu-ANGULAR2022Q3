@@ -15,7 +15,7 @@ import { SearchService } from './search.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  search: String = '';
+  search = '';
   submitted = false;
 
   constructor(
@@ -27,10 +27,10 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  onSubmit(inputSearch: string) {
     this.submitted = true;
     this.searchService.setSubmitted(true);
-    this.responseService.getItemsList().subscribe((value) => {
+    this.responseService.getItemsList(inputSearch).subscribe((value) => {
       if (Array.isArray(value)) {
         this.responseService.setItems(value);
       }

@@ -14,7 +14,7 @@ import { ResponseService } from '../../response.service';
 export class VideoComponent implements OnInit {
   id = this.getIdFromUrl(this.router.url);
   item = this.response.getItemById(this.id);
-  url = this.item.snippet.thumbnails.maxres.url;
+  url = this.item.snippet.thumbnails.high.url;
   title = this.item.snippet.title;
   publishedAt = this.item.snippet.publishedAt;
   options: Intl.DateTimeFormatOptions = {
@@ -25,10 +25,10 @@ export class VideoComponent implements OnInit {
   };
   publishedAtFormatted = (new Date(this.item.snippet.publishedAt)).toLocaleDateString('en-US', this.options);
   description = this.item.snippet.description;
-  viewsCount = this.item.statistics.viewCount;
-  likesCount = this.item.statistics.likeCount;
-  dislikesCount = this.item.statistics.dislikeCount;
-  commentsCount = this.item.statistics.commentCount;
+  viewsCount =this.item.statistics ? this.item.statistics.viewCount : '?';
+  likesCount = this.item.statistics ? this.item.statistics.likeCount : '?';
+  dislikesCount = this.item.statistics ? this.item.statistics.dislikeCount : '?';
+  commentsCount = this.item.statistics ? this.item.statistics.commentCount : '?';
 
   appColorLine = this.colorLine.publishedAt;
 

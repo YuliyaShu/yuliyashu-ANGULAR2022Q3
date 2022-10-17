@@ -9,10 +9,10 @@ import { ResponseService } from './youtube/main/response.service';
 export class AppComponent {
   constructor(private responseService: ResponseService) {}
   ngOnInit(): void {
-    this.responseService.getItemsList().subscribe((value) => {
-      if (Array.isArray(value)) {
-        this.responseService.setItems(value);
-      }
-    });
+    // this.responseService.getItemsList('').subscribe((value) => {
+    //   if (Array.isArray(value)) {
+    //     this.responseService.setItems(value);
+    //   }
+    // });
   }
 }

@@ -12,16 +12,39 @@ import { Item } from '../../core/interfaces/Item';
 })
 
 export class ResponseService {
-  url = '../../response.json';
-  itemsList = this.getItemsList();
+  key = 'AIzaSyAKGSX3yFnXH9U6RaRIPC6tANeiZeX4Kpk';
+  url = 'https://www.googleapis.com/youtube/v3/search?';
+  urlStat = 'https://www.googleapis.com/youtube/v3/videos?';
   items = new BehaviorSubject<Item[]>([]);
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient, private router: Router) { }
 
-  getItemsList() {
-    return this.http.get<ItemsList>(this.url)
+  getItemsList(inputSearch: string) {
+    return this.http.get<ItemsList>(this.url, {
+      params: {
+        key: this.key,
+        type: 'video',
+        part: 'snippet',
+        maxResults: 10,
+        q: inputSearch,
+      },
+    })
       .pipe(
-        map((value) => value.items),
+        map((value) => {
+          this.items.next(value.items);
+          value.items.forEach((item) => {
+            this.getStatisticsById(item.id.videoId).subscribe((stat) => {
+              if (typeof stat === 'object') {
+                Object.defineProperties(item, {
+                  statistics: {
+                    value: stat.items[0].statistics,
+                  },
+                });
+              }
+            });
+          });
+          return value;
+        }),
         catchError((err: Error) => {
           this.openSnackBar(err.message);
           return err.message;
@@ -43,7 +66,7 @@ export class ResponseService {
   getItemById(id: string) {
     let result!: Item;
     if (this.items.value instanceof Array) {
-      const itemWithProperId = this.items.value.filter((item) => item.id === id);
+      const itemWithProperId = this.items.value.filter((item) => item.id.videoId === id);
       if (itemWithProperId.length) {
         [result] = itemWithProperId;
       } else {
@@ -51,5 +74,29 @@ export class ResponseService {
       }
     }
     return result;
+  }
+
+  getStatisticsById(idForStat: string) {
+    return this.http.get<ItemsList>(this.urlStat, {
+      params: {
+        key: this.key,
+        part: 'statistics',
+        id: idForStat,
+      },
+    })
+      .pipe(
+        map((value) => {
+          Object.defineProperties(value.items[0].statistics, {
+            dislikeCount: {
+              value: Math.round(Math.random() * 100).toString(),
+            },
+          });
+          return value;
+        }),
+        catchError((err: Error) => {
+          this.openSnackBar(err.message);
+          return err.message;
+        }),
+      );
   }
 }
