@@ -1,6 +1,5 @@
 <form class="example-form">
   <mat-form-field appearance="legacy" class="example-full-width">
-    <input type="text" matInput placeholder="Search" [(ngModel)]= "search" [ngModelOptions]="{standalone: true}">
-    <button mat-raised-button color="blue" (click)="onSubmit()">Search</button>
+    <input type="text" matInput placeholder="Search"  [formControl]="text">
   </mat-form-field>
 </form>

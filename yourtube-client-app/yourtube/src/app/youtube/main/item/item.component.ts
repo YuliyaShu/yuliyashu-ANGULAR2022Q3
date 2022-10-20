@@ -1,18 +1,13 @@
-import {
-  Component, OnInit, Input, Injectable,
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Item } from '../../../core/interfaces/Item';
 import { ColorLineDirective } from '../../../shared/color-line/color-line.directive';
 
-@Injectable({
-  providedIn: 'root',
-})
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss'],
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent {
   @Input() videoThumbnail = '';
   @Input() viewsCount = '';
   @Input() likesCount = '';
@@ -25,13 +20,9 @@ export class ItemComponent implements OnInit {
 
   appColorLine = this.colorLine.publishedAt;
 
-  constructor(private colorLine: ColorLineDirective) {
+  constructor(private colorLine: ColorLineDirective) {}
 
-  }
-  ngOnInit(): void {
-  }
-
-  clickedItem(item: Item) {
-    localStorage.setItem('item', JSON.stringify(item));
+  setCount(count: string) {
+    return (+count) >= 1000 ? '>1k' : count;
   }
 }

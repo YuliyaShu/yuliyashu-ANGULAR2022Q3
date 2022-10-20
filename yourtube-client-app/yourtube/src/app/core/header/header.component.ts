@@ -13,18 +13,8 @@ import { SortService } from './sort/sort.service';
 })
 export class HeaderComponent implements OnInit {
   settingsOn = false;
-  result = this.sortService.getSettingsOn().subscribe((value) => {
-    this.settingsOn = value;
-    return value;
-  });
-  count = 0;
   isLogin = !!(localStorage.getItem('token'));
   login = localStorage.getItem('login') || 'Guest';
-  getLoginData = this.loginData.getLoginData().subscribe((data) => {
-    if (data.token) {
-      this.login = JSON.parse(data.token).login!;
-    }
-  })
 
   constructor(
     private sortService: SortService,
@@ -34,15 +24,19 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.sortService.getSettingsOn().subscribe((value) => {
+      this.settingsOn = value;
+      return value;
+    });
+    this.loginData.getLoginData().subscribe((data) => {
+      if (data.token) {
+        this.login = JSON.parse(data.token).login!;
+      }
+    });
   }
 
   onSettings() {
-    if (this.count % 2) {
-      this.settingsOn = false;
-    } else {
-      this.settingsOn = true;
-    }
-    this.count += 1;
+    this.settingsOn = !this.settingsOn;
     this.sortService.setSettingsOn(this.settingsOn);
   }
 

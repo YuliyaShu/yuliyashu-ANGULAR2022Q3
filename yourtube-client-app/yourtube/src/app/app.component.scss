@@ -1,3 +1,5 @@
+@use '../colors.scss';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -7,5 +9,5 @@
 
 app-header {
   width: 100vw;
-  background: #f5f5f5;
+  background: colors.$light;
 }

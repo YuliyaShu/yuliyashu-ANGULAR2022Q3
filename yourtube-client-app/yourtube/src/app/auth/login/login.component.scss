@@ -1,8 +1,10 @@
+@use '../../../colors.scss';
+
 form {
   width: 280px;
   margin: 20px auto 0;
   padding: 5%;
-  background-color: #f5f5f5;
+  background-color: colors.$light;
   border-radius: 5px;
 }
 
@@ -20,8 +22,8 @@ h2 {
 }
 
 .mat-blue {
-  background-color: #2f80ed;
-  color: white;
+  background-color: colors.$blue;
+  color: colors.$white;
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;

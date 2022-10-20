@@ -1,3 +1,5 @@
+@use '../../../colors.scss';
+
 .header {
   &__row {
     display: flex;
@@ -24,7 +26,7 @@ app-login {
   height: 20px;
   background-color: transparent;
   border: none;
-  margin-left: 90px;
+  margin-left: 10px;
   margin-bottom: 12px;
 }
 
@@ -36,7 +38,7 @@ p {
   font-size: 12px;
   line-height: 14px;
   text-align: right;
-  color: #4f4f4f;
+  color: colors.$grey;
   justify-self: center;
 }
 
