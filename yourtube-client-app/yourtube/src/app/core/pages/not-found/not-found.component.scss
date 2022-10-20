@@ -1,3 +1,5 @@
+@use '../../../../colors.scss';
+
 :host {
   display: flex;
   flex-flow: row wrap;
@@ -13,6 +15,6 @@ p {
   line-height: 28px;
   display: flex;
   align-items: center;
-  color: #828282;
+  color: colors.$light-grey;
   margin-left: 30px;
 }

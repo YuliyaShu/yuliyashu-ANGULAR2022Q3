@@ -42,7 +42,6 @@ export class ResponseService {
               value.items.forEach((item) => {
                 const statisticsForProperty = stat.items
                   .filter((itemStat) => itemStat.id === item.id.videoId);
-                console.log('🚀 ~ statisticsForProperty', statisticsForProperty);
                 Object.defineProperties(item, {
                   statistics: {
                     value: statisticsForProperty[0].statistics,
@@ -51,7 +50,6 @@ export class ResponseService {
               });
             }
           });
-          console.log('🚀 ~ value', value);
           return value;
         }),
         catchError((err: Error) => {
@@ -102,7 +100,6 @@ export class ResponseService {
               },
             });
           });
-          console.log(value);
           return value;
         }),
         catchError((err: Error) => {

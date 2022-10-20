@@ -1,6 +1,4 @@
-import {
-  Component, OnInit,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColorLineDirective } from '../../../../shared/color-line/color-line.directive';
 import { ResponseService } from '../../response.service';
@@ -11,7 +9,7 @@ import { ResponseService } from '../../response.service';
   styleUrls: ['./video.component.scss'],
 })
 
-export class VideoComponent implements OnInit {
+export class VideoComponent {
   id = this.getIdFromUrl(this.router.url);
   item = this.response.getItemById(this.id);
   url = this.item.snippet.thumbnails.high.url;
@@ -29,7 +27,6 @@ export class VideoComponent implements OnInit {
   likesCount = this.item.statistics ? this.item.statistics.likeCount : '?';
   dislikesCount = this.item.statistics ? this.item.statistics.dislikeCount : '?';
   commentsCount = this.item.statistics ? this.item.statistics.commentCount : '?';
-
   appColorLine = this.colorLine.publishedAt;
 
   constructor(
@@ -37,9 +34,6 @@ export class VideoComponent implements OnInit {
     private response: ResponseService,
     private router: Router,
   ) {}
-
-  ngOnInit(): void {
-  }
 
   getIdFromUrl(url: string) {
     const urlToArray = url.split('/');

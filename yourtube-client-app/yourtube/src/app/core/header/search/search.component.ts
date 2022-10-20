@@ -8,6 +8,7 @@ import {
 } from 'rxjs';
 
 import { ResponseService } from '../../../youtube/main/response.service';
+import { config } from './search.constants';
 import { SearchService } from './search.service';
 
 @Injectable({
@@ -31,8 +32,8 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.text.valueChanges.pipe(
-      filter((item) => item!.length >= 4),
-      debounceTime(2000),
+      filter((item) => item!.length >= config.SEARCH_LENGTH),
+      debounceTime(config.DEBOUNCE_TIME),
       distinctUntilChanged(),
     ).subscribe((value) => {
       this.submitted = true;

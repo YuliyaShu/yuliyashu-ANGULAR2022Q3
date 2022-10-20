@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoginService } from '../../../auth/login/login.service';
 
 @Component({
@@ -6,11 +6,8 @@ import { LoginService } from '../../../auth/login/login.service';
   templateUrl: './log-out-dialog.component.html',
   styleUrls: ['./log-out-dialog.component.scss'],
 })
-export class LogOutDialogComponent implements OnInit {
+export class LogOutDialogComponent {
   constructor(private loginData: LoginService) { }
-
-  ngOnInit(): void {
-  }
 
   removeLoginData() {
     this.loginData.deleteLoginData();

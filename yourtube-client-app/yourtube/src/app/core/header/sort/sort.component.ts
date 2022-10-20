@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ResponseService } from '../../../youtube/main/response.service';
 import { Item } from '../../interfaces/Item';
 import { SortItemsService } from './sort-items.service';
+import { config } from './sort.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -15,10 +16,6 @@ import { SortItemsService } from './sort-items.service';
 })
 export class SortComponent implements OnInit {
   items: Item[] = [];
-  result = this.responseService.getItems().subscribe((value) => {
-    this.items = value;
-    return value;
-  });
   sortedItemsList: Item[] = [];
   dataSource = new MatTableDataSource(this.items);
 
@@ -29,6 +26,10 @@ export class SortComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.responseService.getItems().subscribe((value) => {
+      this.items = value;
+      return value;
+    });
     this.dataSource
       .filterPredicate = (data: Item, filter: string) => data.snippet.title
         .toLocaleLowerCase().includes(filter)
@@ -44,15 +45,15 @@ export class SortComponent implements OnInit {
       return;
     }
     this.sortedItemsList = data.sort((a, b) => {
-      const isAsc = sort.direction === 'asc';
+      const isAsc = sort.direction === config.ASCENDING_ORDER;
       switch (sort.active) {
-        case 'date':
+        case config.DATE_CASE:
           return this.compare(
             Date.parse(a.snippet.publishedAt),
             Date.parse(b.snippet.publishedAt),
             isAsc,
           );
-        case 'views':
+        case config.VIEWS_CASE:
           return this.compare(a.statistics.viewCount, b.statistics.viewCount, isAsc);
         default:
           return 0;
@@ -60,6 +61,7 @@ export class SortComponent implements OnInit {
     });
     this.sortItemsList.setSort(this.sortedItemsList);
   }
+
   compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }

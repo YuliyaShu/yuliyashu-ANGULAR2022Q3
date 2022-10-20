@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LoginFields } from '../../core/interfaces/LoginFields';
-// import { LoginFields } from '../../core/interfaces/LoginFields';
 import { LoginService } from './login.service';
 
 @Component({
@@ -10,7 +8,7 @@ import { LoginService } from './login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   authForm = new FormGroup({
     login: new FormControl('', [
       Validators.required,
@@ -27,10 +25,7 @@ export class LoginComponent implements OnInit {
   controlLogin = this.authForm.get('login') as FormControl;
   controlPassword = this.authForm.get('password') as FormControl;
 
-  constructor(private router: Router, private login: LoginService) { }
-
-  ngOnInit(): void {
-  }
+  constructor(private login: LoginService) { }
 
   onSubmitButton() {
     if (this.authForm.invalid) {

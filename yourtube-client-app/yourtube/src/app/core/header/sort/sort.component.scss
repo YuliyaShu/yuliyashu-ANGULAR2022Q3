@@ -1,3 +1,5 @@
+@use '../../../../colors.scss';
+
 p,
 div {
   font-family: Roboto, sans-serif;
@@ -19,4 +21,9 @@ p {
 
 .mat-sort-header {
   margin-right: 10px;
+}
+
+input {
+  background-color: colors.$white;
+  border: 1px solid colors.$grey;
 }
