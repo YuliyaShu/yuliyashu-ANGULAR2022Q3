@@ -1,7 +1,12 @@
 import {
   Component, Injectable, OnInit,
 } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import {
+  debounceTime, distinctUntilChanged, filter,
+} from 'rxjs';
+
 import { ResponseService } from '../../../youtube/main/response.service';
 import { SearchService } from './search.service';
 
@@ -15,7 +20,7 @@ import { SearchService } from './search.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  search = '';
+  text = new FormControl();
   submitted = false;
 
   constructor(
@@ -25,16 +30,19 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  onSubmit(inputSearch: string) {
-    this.submitted = true;
-    this.searchService.setSubmitted(true);
-    this.responseService.getItemsList(inputSearch).subscribe((value) => {
-      if (Array.isArray(value)) {
-        this.responseService.setItems(value);
-      }
+    this.text.valueChanges.pipe(
+      filter((item) => item!.length >= 4),
+      debounceTime(2000),
+      distinctUntilChanged(),
+    ).subscribe((value) => {
+      this.submitted = true;
+      this.searchService.setSubmitted(true);
+      this.responseService.getItemsList(value).subscribe((itemList) => {
+        if (Array.isArray(itemList)) {
+          this.responseService.setItems(itemList);
+        }
+      });
+      this.router.navigateByUrl('');
     });
-    this.router.navigateByUrl('');
   }
 }

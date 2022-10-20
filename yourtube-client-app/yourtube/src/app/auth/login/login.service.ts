@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { LoginFields } from '../../core/interfaces/LoginFields';
 
@@ -12,7 +11,6 @@ export class LoginService {
     isLogin: !!(localStorage.getItem('token')),
   }
   private loginData = new BehaviorSubject(this.data);
-  constructor(private router: Router) {}
 
   setLoginData(data: LoginFields) {
     this.data.token = JSON.stringify(data);

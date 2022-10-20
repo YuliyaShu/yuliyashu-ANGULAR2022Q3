@@ -1,12 +1,7 @@
-import {
-  Component, OnInit, Input, Injectable,
-} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Item } from '../../../core/interfaces/Item';
 import { ColorLineDirective } from '../../../shared/color-line/color-line.directive';
 
-@Injectable({
-  providedIn: 'root',
-})
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
