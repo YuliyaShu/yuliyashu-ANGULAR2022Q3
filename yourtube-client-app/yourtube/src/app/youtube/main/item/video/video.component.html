@@ -5,22 +5,19 @@
   <div class="video-img">
     <img mat-card-image [src]="url" alt="Photo of a video">
   </div>
-
   <mat-card-content class="video-content">
     <h1>{{title}}</h1>
     <p class="date">{{publishedAtFormatted}}</p>
     <p class="description-title">Description:</p>
     <p class="description">{{description}}</p>
     <mat-card-content class="video-badges">
-      <mat-icon [matBadge]="(+viewsCount) >= 1000 ? '>1k' : viewsCount" matBadgeColor="accent">remove_red_eye</mat-icon>
-      <mat-icon [matBadge]="(+likesCount) >= 1000 ? '>1k' : likesCount" matBadgeColor="accent">mood</mat-icon>
-      <mat-icon [matBadge]="(+dislikesCount) >= 1000 ? '>1k' : dislikesCount" matBadgeColor="accent">mood_bad</mat-icon>
-      <mat-icon [matBadge]="(+commentsCount) >= 1000 ? '>1k' : commentsCount" matBadgeColor="accent"> comment</mat-icon>
+      <mat-icon [matBadge]="setCount(viewsCount)" matBadgeColor="accent">remove_red_eye</mat-icon>
+      <mat-icon [matBadge]="setCount(likesCount)" matBadgeColor="accent">mood</mat-icon>
+      <mat-icon [matBadge]="setCount(dislikesCount)" matBadgeColor="accent">mood_bad</mat-icon>
+      <mat-icon [matBadge]="setCount(commentsCount)" matBadgeColor="accent"> comment</mat-icon>
     </mat-card-content>
     <mat-card-footer>
       <div class="color-line" [appColorLine]="publishedAt"></div>
     </mat-card-footer>
   </mat-card-content>
-
 </mat-card>
-

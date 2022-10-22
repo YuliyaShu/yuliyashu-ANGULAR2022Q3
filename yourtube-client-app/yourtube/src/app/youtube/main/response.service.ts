@@ -108,4 +108,21 @@ export class ResponseService {
         }),
       );
   }
+
+  getItemById2(itemId: string) {
+    return this.http.get<ItemsList>(this.urlStat, {
+      params: {
+        key: this.key,
+        part: 'snippet,statistics',
+        id: itemId,
+      },
+    })
+      .pipe(
+        map((value) => value),
+        catchError((err: Error) => {
+          this.openSnackBar(err.message);
+          return err.message;
+        }),
+      );
+  }
 }
