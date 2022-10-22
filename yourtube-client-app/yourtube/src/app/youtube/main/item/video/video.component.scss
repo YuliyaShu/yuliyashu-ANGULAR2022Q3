@@ -1,4 +1,4 @@
-@use '../../../../../colors.scss';
+@use "../../../../../colors.scss";
 
 :host {
   display: flex;
@@ -43,6 +43,7 @@
   margin: 0;
   display: block;
   overflow: hidden;
+  height: 390px;
 }
 
 .mat-card-image:first-child {
