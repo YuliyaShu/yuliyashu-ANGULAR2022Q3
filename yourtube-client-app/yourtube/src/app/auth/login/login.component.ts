@@ -12,14 +12,12 @@ export class LoginComponent {
   authForm = new FormGroup({
     login: new FormControl('', [
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(20),
-      Validators.pattern(/^[a-z0-9]+$/),
+      Validators.email,
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(4),
-      Validators.maxLength(20),
+      Validators.minLength(8),
+      Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/),
     ]),
   });
   controlLogin = this.authForm.get('login') as FormControl;
