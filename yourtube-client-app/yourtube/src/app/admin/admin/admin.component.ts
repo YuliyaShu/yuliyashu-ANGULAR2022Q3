@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors,
 } from '@angular/forms';
@@ -14,7 +14,7 @@ export function noFutureDateValidator(): ValidatorFn {
   styleUrls: ['./admin.component.scss'],
 })
 
-export class AdminComponent implements OnInit {
+export class AdminComponent {
   authForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -42,9 +42,4 @@ export class AdminComponent implements OnInit {
   controlImage = this.authForm.get('image') as FormControl;
   controlVideo = this.authForm.get('video') as FormControl;
   controlDate = this.authForm.get('date') as FormControl;
-
-  // constructor() { }
-
-  ngOnInit(): void {
-  }
 }
