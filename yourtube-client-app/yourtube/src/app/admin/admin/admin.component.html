@@ -1,0 +1,52 @@
+<div class="container">
+  <form [formGroup]="authForm">
+    <h2>Create new card</h2>
+    <mat-form-field appearance="standard">
+      <mat-label for="inputTitle" class="col-sm-12 col-form-label">Title</mat-label>
+      <div class="col-sm-12" [formGroup]="authForm">
+        <input matInput formControlName="title" type="text" class="form-control" id="inputTitle" [formControl]="controlTitle" autocomplete="new-password">
+      </div>
+    </mat-form-field>
+    <p class="fs-6 fw-light" *ngIf="controlTitle?.errors?.['required']">*please enter a title</p>
+    <p class="fs-6 fw-light" *ngIf="controlTitle?.errors?.['minlength']">*the title is too short, minlength 3</p>
+    <p class="fs-6 fw-light" *ngIf="controlTitle?.errors?.['maxlength']">*the title is too long, maxlength 20</p>
+
+    <mat-form-field appearance="standard">
+      <mat-label for="inputDescription" class="col-sm-12 col-form-label">Description</mat-label>
+      <div class="col-sm-12" [formGroup]="authForm">
+        <input matInput formControlName="description" type="text" class="form-control" id="inputDescription" [formControl]="controlDescription" autocomplete="new-password">
+      </div>
+    </mat-form-field>
+    <p class="fs-6 fw-light" *ngIf="controlDescription?.errors?.['maxlength']">*the description is too long, maxlength 255</p>
+
+    <mat-form-field appearance="standard">
+      <mat-label for="inputImage" class="col-sm-12 col-form-label">Image</mat-label>
+      <div class="col-sm-12" [formGroup]="authForm">
+        <input matInput formControlName="image" type="text" class="form-control" id="inputImage" [formControl]="controlImage" autocomplete="new-password">
+      </div>
+    </mat-form-field>
+    <p class="fs-6 fw-light" *ngIf="controlImage?.errors?.['required']">*please enter a link to the image</p>
+    <p class="fs-6 fw-light" *ngIf="controlImage?.errors?.['pattern']">*the image link is invalid</p>
+
+    <mat-form-field appearance="standard">
+      <mat-label for="inputVideo" class="col-sm-12 col-form-label">Video</mat-label>
+      <div class="col-sm-12" [formGroup]="authForm">
+        <input matInput formControlName="video" type="text" class="form-control" id="inputVideo" [formControl]="controlVideo" autocomplete="new-password">
+      </div>
+    </mat-form-field>
+    <p class="fs-6 fw-light" *ngIf="controlVideo?.errors?.['required']">*please enter a link to the video</p>
+    <p class="fs-6 fw-light" *ngIf="controlVideo?.errors?.['pattern']">*the video link is invalid</p>
+
+    <mat-form-field appearance="standard">
+      <mat-label for="inputDate" class="col-sm-12 col-form-label">Date</mat-label>
+      <div class="col-sm-12" [formGroup]="authForm">
+        <input matInput formControlName="date" type="date" class="form-control" id="inputDate" [formControl]="controlDate" autocomplete="new-password">
+      </div>
+    </mat-form-field>
+    <p class="fs-6 fw-light" *ngIf="controlDate?.errors?.['required']">*please enter a creation date</p>
+    <p class="fs-6 fw-light" *ngIf="controlDate?.errors?.['noFutureDateValidator']">*the date is invalid, future date</p>
+
+    <button mat-raised-button color="blue" type="submit" [disabled]="authForm.invalid"  class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
