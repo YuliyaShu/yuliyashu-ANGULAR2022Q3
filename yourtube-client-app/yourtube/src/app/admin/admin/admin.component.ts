@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {
   FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors,
 } from '@angular/forms';
+import { config } from './admin.constants';
 
 export function noFutureDateValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => (
@@ -18,19 +19,19 @@ export class AdminComponent {
   authForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
-      Validators.minLength(3),
-      Validators.maxLength(20),
+      Validators.minLength(config.MIN_LENGTH),
+      Validators.maxLength(config.MAX_LENGTH),
     ]),
     description: new FormControl('', [
-      Validators.maxLength(255),
+      Validators.maxLength(config.MAX_LENGTH_DESCRIPTION),
     ]),
     image: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}$/),
+      Validators.pattern(config.PATTERN_IS_URL),
     ]),
     video: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}$/),
+      Validators.pattern(config.PATTERN_IS_URL),
     ]),
     date: new FormControl('', [
       Validators.required,
