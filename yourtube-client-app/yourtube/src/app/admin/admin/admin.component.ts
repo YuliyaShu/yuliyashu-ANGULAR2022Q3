@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { NewAdminItem } from '../../core/interfaces/NewAdminItem';
+import { State } from '../../core/interfaces/State';
 import { config } from './admin.constants';
+import * as AdminPageActions from '../actions/admin-page.actions';
 
 export function noFutureDateValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => (
@@ -15,7 +19,7 @@ export function noFutureDateValidator(): ValidatorFn {
   styleUrls: ['./admin.component.scss'],
 })
 
-export class AdminComponent {
+export class AdminComponent implements OnInit {
   authForm = new FormGroup({
     title: new FormControl('', [
       Validators.required,
@@ -43,4 +47,16 @@ export class AdminComponent {
   controlImage = this.authForm.get('image') as FormControl;
   controlVideo = this.authForm.get('video') as FormControl;
   controlDate = this.authForm.get('date') as FormControl;
+  adminItem!: NewAdminItem;
+
+  constructor(private store: Store<State>) { }
+
+  ngOnInit() {
+  }
+  createItem() {
+    const value = this.authForm.value as NewAdminItem;
+    this.store.dispatch(AdminPageActions.createItem({
+      item: value,
+    }));
+  }
 }

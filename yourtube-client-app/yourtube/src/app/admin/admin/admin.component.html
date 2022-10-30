@@ -46,7 +46,7 @@
     <p class="fs-6 fw-light" *ngIf="controlDate?.errors?.['required']">*please enter a creation date</p>
     <p class="fs-6 fw-light" *ngIf="controlDate?.errors?.['noFutureDateValidator']">*the date is invalid, future date</p>
 
-    <button mat-raised-button color="blue" type="submit" [disabled]="authForm.invalid"  class="btn btn-primary">Submit</button>
+    <button mat-raised-button color="blue" type="submit" [disabled]="authForm.invalid"  class="btn btn-primary" (click)="createItem()">Submit</button>
   </form>
 </div>
 
