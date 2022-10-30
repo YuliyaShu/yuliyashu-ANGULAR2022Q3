@@ -28,13 +28,10 @@ export class SortComponent implements OnInit {
   ngOnInit(): void {
     this.responseService.getItems().subscribe((value) => {
       this.items = value;
+      this.sortItemsList.setSort(value);
+      this.dataSource = new MatTableDataSource(value);
       return value;
     });
-    this.dataSource
-      .filterPredicate = (data: Item, filter: string) => data.snippet.title
-        .toLocaleLowerCase().includes(filter)
-      || data.snippet.description
-        .toLocaleLowerCase().includes(filter);
   }
 
   sortItems(sort: Sort) {
@@ -69,6 +66,11 @@ export class SortComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource
+      .filterPredicate = (data: Item, filter: string) => data.snippet.title
+        .toLocaleLowerCase().includes(filter)
+      || data.snippet.description
+        .toLocaleLowerCase().includes(filter);
     this.sortItemsList.setSort(this.dataSource.filteredData);
   }
 }

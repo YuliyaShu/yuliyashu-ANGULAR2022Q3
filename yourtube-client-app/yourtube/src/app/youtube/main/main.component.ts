@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { getItemsAdmin } from '../../admin/actions/admin-page.actions';
 import { SearchService } from '../../core/header/search/search.service';
 import { SortItemsService } from '../../core/header/sort/sort-items.service';
 import { Item } from '../../core/interfaces/Item';
@@ -18,12 +20,14 @@ export class MainComponent implements OnInit {
     private responseService: ResponseService,
     private searchService: SearchService,
     private sortItems: SortItemsService,
+    private store: Store,
   ) { }
 
   ngOnInit() {
     this.responseService.getItems().subscribe((value) => {
       this.items = value;
       this.sortedItems = value;
+      this.store.dispatch(getItemsAdmin({ item: value }));
       return value;
     });
     this.sortItems.getSort().subscribe((value) => {

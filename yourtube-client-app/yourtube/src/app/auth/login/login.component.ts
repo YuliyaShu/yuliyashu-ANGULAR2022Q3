@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginFields } from '../../core/interfaces/LoginFields';
+import { config } from './login.constants';
 import { LoginService } from './login.service';
 
 @Component({
@@ -16,8 +17,8 @@ export class LoginComponent {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
-      Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/),
+      Validators.minLength(config.MIN_LENGTH),
+      Validators.pattern(config.PATTERN_PASSWORD),
     ]),
   });
   controlLogin = this.authForm.get('login') as FormControl;
