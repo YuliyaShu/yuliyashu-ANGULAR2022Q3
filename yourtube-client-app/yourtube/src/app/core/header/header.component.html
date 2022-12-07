@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-toolbar >
+    <mat-toolbar-row class="header__row">
+      <a routerLink="admin">
+        <img src="../../assets/images/logo.svg" alt="logo">
+      </a>
+      <app-search ></app-search>
+      <button class="settings-button" *ngIf="isRoute('video')" (click)="onSettings()">
+        <img class="settings-img" src="../../assets/images/search_settings.svg" alt="settings">
+      </button>
+      <ng-container *ngIf="!isLogin">
+        <p>{{ login }}</p>
+        <a routerLink="/login" [attr.disabled]="isRoute('login')">
+          <img class="login-img" src="../../assets/images/login.svg" alt="login">
+        </a>
+      </ng-container>
+      <ng-container *ngIf="isLogin">
+        <p>{{ login }}</p>
+        <img [attr.disabled]="isRoute('login')" (click)="openDialog()" class="login-img" src="../../assets/images/logout.png" alt="login">
+      </ng-container>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="header__row">
+      <ng-template [ngIf]="settingsOn">
+        <app-sort></app-sort>
+      </ng-template>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
